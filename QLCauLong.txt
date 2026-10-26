@@ -1,0 +1,192 @@
+﻿﻿USE [master]
+GO
+
+CREATE DATABASE [QLCauLong]
+GO
+
+USE [QLCauLong]
+GO
+
+
+SET ANSI_NULLS O
+GO4
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Chitietdonhang](
+	[Madon] [int] NOT NULL,
+	[Masp] [int] NOT NULL,
+	[Soluong] [int] NULL,
+	[Dongia] [decimal](18, 0) NULL,
+	[Thanhtien] [decimal](18, 0) NULL,
+	[Phuongthucthanhtoan] [int] NULL,
+ CONSTRAINT [PK_Chitietdonhang] PRIMARY KEY CLUSTERED 
+(
+	[Madon] ASC,
+	[Masp] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Donhang](
+	[Madon] [int] IDENTITY(1,1) NOT NULL,
+	[Ngaydat] [datetime] NULL,
+	[Tinhtrang] [int] NULL,
+	[MaNguoidung] [int] NULL,
+	[Thanhtoan] [int] NULL,
+	[Diachinhanhang] [nvarchar](100) NULL,
+	[Tongtien] [decimal](18, 0) NULL,
+ CONSTRAINT [PK_Donhang] PRIMARY KEY CLUSTERED 
+(
+	[Madon] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Hangsanxuat](
+	[Mahang] [int] IDENTITY(1,1) NOT NULL,
+	[Tenhang] [nchar](10) NULL,
+ CONSTRAINT [PK_Hangsanxuat] PRIMARY KEY CLUSTERED 
+(
+	[Mahang] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Nguoidung](
+	[MaNguoiDung] [int] IDENTITY(1,1) NOT NULL,
+	[Hoten] [nvarchar](50) NULL,
+	[Email] [nvarchar](50) NULL,
+	[Dienthoai] [nchar](10) NULL,
+	[Matkhau] [varchar](50) NULL,
+	[IDQuyen] [int] NULL,
+	[Diachi] [nvarchar](100) NULL,
+	[Anhdaidien] [nchar](30) NULL,
+ CONSTRAINT [PK_Khachhang] PRIMARY KEY CLUSTERED 
+(
+	[MaNguoiDung] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PhanQuyen](
+	[IDQuyen] [int] IDENTITY(1,1) NOT NULL,
+	[TenQuyen] [nvarchar](20) NULL,
+ CONSTRAINT [PK_PhanQuyen] PRIMARY KEY CLUSTERED 
+(
+	[IDQuyen] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sanpham](
+	[Masp] [int] IDENTITY(1,1) NOT NULL,
+	[Tensp] [nvarchar](50) NULL,
+	[Giatien] [decimal](18, 0) NULL,
+	[Soluong] [int] NULL,
+	[Mota] [ntext] NULL,
+	[Sanphammoi] [bit] NULL,
+	[Anhbia] [nvarchar](50) NULL,
+	[Mahang] [int] NULL,
+ CONSTRAINT [PK_Sanpham] PRIMARY KEY CLUSTERED 
+(
+	[Masp] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+SET IDENTITY_INSERT [dbo].[Donhang] ON 
+
+INSERT [dbo].[Donhang] ([Madon], [Ngaydat], [Tinhtrang], [MaNguoidung], [Thanhtoan], [Diachinhanhang], [Tongtien]) VALUES (24, CAST(N'2021-09-18T14:59:42.090' AS DateTime), 1, 16, 1, N'TP BD', CAST(4000000 AS Decimal(18, 0)))
+INSERT [dbo].[Donhang] ([Madon], [Ngaydat], [Tinhtrang], [MaNguoidung], [Thanhtoan], [Diachinhanhang], [Tongtien]) VALUES (25, CAST(N'2021-09-18T15:03:47.463' AS DateTime), 1, 15, 1, N'TP BD', CAST(12000000 AS Decimal(18, 0)))
+INSERT [dbo].[Donhang] ([Madon], [Ngaydat], [Tinhtrang], [MaNguoidung], [Thanhtoan], [Diachinhanhang], [Tongtien]) VALUES (26, CAST(N'2021-09-18T15:04:01.733' AS DateTime), NULL, 15, 1, N'TP BD', CAST(8000000 AS Decimal(18, 0)))
+INSERT [dbo].[Donhang] ([Madon], [Ngaydat], [Tinhtrang], [MaNguoidung], [Thanhtoan], [Diachinhanhang], [Tongtien]) VALUES (27, CAST(N'2021-09-18T15:04:23.733' AS DateTime), NULL, 15, 1, N'TP BD', CAST(8000000 AS Decimal(18, 0)))
+INSERT [dbo].[Donhang] ([Madon], [Ngaydat], [Tinhtrang], [MaNguoidung], [Thanhtoan], [Diachinhanhang], [Tongtien]) VALUES (28, CAST(N'2021-09-18T15:04:57.770' AS DateTime), NULL, 16, 1, N'TP BD', CAST(4000000 AS Decimal(18, 0)))
+INSERT [dbo].[Donhang] ([Madon], [Ngaydat], [Tinhtrang], [MaNguoidung], [Thanhtoan], [Diachinhanhang], [Tongtien]) VALUES (29, CAST(N'2021-09-18T15:05:21.277' AS DateTime), NULL, 36, 1, N'TP BD', CAST(2000000 AS Decimal(18, 0)))
+INSERT [dbo].[Donhang] ([Madon], [Ngaydat], [Tinhtrang], [MaNguoidung], [Thanhtoan], [Diachinhanhang], [Tongtien]) VALUES (30, CAST(N'2021-09-18T17:18:36.577' AS DateTime), NULL, 36, 1, N'TPBD', CAST(22000000 AS Decimal(18, 0)))
+INSERT [dbo].[Donhang] ([Madon], [Ngaydat], [Tinhtrang], [MaNguoidung], [Thanhtoan], [Diachinhanhang], [Tongtien]) VALUES (31, CAST(N'2021-09-18T17:18:50.487' AS DateTime), NULL, 36, 1, N'h', CAST(22000000 AS Decimal(18, 0)))
+INSERT [dbo].[Donhang] ([Madon], [Ngaydat], [Tinhtrang], [MaNguoidung], [Thanhtoan], [Diachinhanhang], [Tongtien]) VALUES (32, CAST(N'2021-09-18T21:48:55.610' AS DateTime), 1, 16, 1, N'TP BD', CAST(2000000 AS Decimal(18, 0)))
+SET IDENTITY_INSERT [dbo].[Donhang] OFF
+GO
+
+
+INSERT [dbo].[Nguoidung] ([MaNguoiDung], [Hoten], [Email], [Dienthoai], [Matkhau], [IDQuyen], [Diachi], [Anhdaidien]) VALUES (14, N'Man tran admin', N'Admin@gmail.com', N'0812883636', N'12345678', 2, N'Bình dương', N'/Images/files/ip3.jpg         ')
+INSERT [dbo].[Nguoidung] ([MaNguoiDung], [Hoten], [Email], [Dienthoai], [Matkhau], [IDQuyen], [Diachi], [Anhdaidien]) VALUES (15, N'test', N'test@gmail.com', N'0812883636', N'12345678', 1, NULL, N'/Images/files/avt4.jpg        ')
+INSERT [dbo].[Nguoidung] ([MaNguoiDung], [Hoten], [Email], [Dienthoai], [Matkhau], [IDQuyen], [Diachi], [Anhdaidien]) VALUES (16, N'Họ tên 11', N'Khach@gmail.com', N'0812883636', N'12345678', NULL, N'Bình dương', N'/Images/files/avt3.jpg        ')
+INSERT [dbo].[Nguoidung] ([MaNguoiDung], [Hoten], [Email], [Dienthoai], [Matkhau], [IDQuyen], [Diachi], [Anhdaidien]) VALUES (36, N'mantran', N'mantran@gmail.com', N'0812883637', N'12345678', 1, NULL, NULL)
+INSERT [dbo].[Nguoidung] ([MaNguoiDung], [Hoten], [Email], [Dienthoai], [Matkhau], [IDQuyen], [Diachi], [Anhdaidien]) VALUES (39, N'Nguyễn Văn A', N'testa@gmail.com', N'0812883636', N'12345678', 1, NULL, NULL)
+INSERT [dbo].[Nguoidung] ([MaNguoiDung], [Hoten], [Email], [Dienthoai], [Matkhau], [IDQuyen], [Diachi], [Anhdaidien]) VALUES (41, N'Nguyễn Văn B', N'tetsb@gmail.com', N'0812883636', N'12345678', 1, NULL, NULL)
+INSERT [dbo].[Nguoidung] ([MaNguoiDung], [Hoten], [Email], [Dienthoai], [Matkhau], [IDQuyen], [Diachi], [Anhdaidien]) VALUES (42, N'Nguyễn Văn C', N'testc@gmail.com', N'0812883636', N'12345678', 1, NULL, NULL)
+SET IDENTITY_INSERT [dbo].[Nguoidung] OFF
+GO
+SET IDENTITY_INSERT [dbo].[PhanQuyen] ON 
+
+INSERT [dbo].[PhanQuyen] ([IDQuyen], [TenQuyen]) VALUES (1, N'Member')
+INSERT [dbo].[PhanQuyen] ([IDQuyen], [TenQuyen]) VALUES (2, N'Admin')
+SET IDENTITY_INSERT [dbo].[PhanQuyen] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Sanpham] ON 
+
+
+ALTER TABLE [dbo].[Nguoidung] ADD  CONSTRAINT [DF_Nguoidung_IDQuyen]  DEFAULT ((0)) FOR [IDQuyen]
+GO
+ALTER TABLE [dbo].[Chitietdonhang]  WITH CHECK ADD  CONSTRAINT [FK_Chitietdonhang_Donhang] FOREIGN KEY([Madon])
+REFERENCES [dbo].[Donhang] ([Madon])
+GO
+ALTER TABLE [dbo].[Chitietdonhang] CHECK CONSTRAINT [FK_Chitietdonhang_Donhang]
+GO
+ALTER TABLE [dbo].[Chitietdonhang]  WITH CHECK ADD  CONSTRAINT [FK_Chitietdonhang_Sanpham] FOREIGN KEY([Masp])
+REFERENCES [dbo].[Sanpham] ([Masp])
+GO
+ALTER TABLE [dbo].[Chitietdonhang] CHECK CONSTRAINT [FK_Chitietdonhang_Sanpham]
+GO
+ALTER TABLE [dbo].[Donhang]  WITH CHECK ADD  CONSTRAINT [FK_Donhang_Khachhang] FOREIGN KEY([MaNguoidung])
+REFERENCES [dbo].[Nguoidung] ([MaNguoiDung])
+GO
+ALTER TABLE [dbo].[Donhang] CHECK CONSTRAINT [FK_Donhang_Khachhang]
+GO
+ALTER TABLE [dbo].[Nguoidung]  WITH CHECK ADD  CONSTRAINT [FK_Nguoidung_Nguoidung] FOREIGN KEY([IDQuyen])
+REFERENCES [dbo].[PhanQuyen] ([IDQuyen])
+GO
+ALTER TABLE [dbo].[Nguoidung] CHECK CONSTRAINT [FK_Nguoidung_Nguoidung]
+GO
+ALTER TABLE [dbo].[Sanpham]  WITH CHECK ADD  CONSTRAINT [FK_Sanpham_Hangsanxuat] FOREIGN KEY([Mahang])
+REFERENCES [dbo].[Hangsanxuat] ([Mahang])
+GO
+ALTER TABLE [dbo].[Sanpham] CHECK CONSTRAINT [FK_Sanpham_Hangsanxuat]
+GO
+ALTER TABLE [dbo].[Sanpham]  WITH CHECK ADD  CONSTRAINT [FK_Sanpham_Hedieuhanh] FOREIGN KEY([Mahdh])
+REFERENCES [dbo].[Hedieuhanh] ([Mahdh])
+GO
+ALTER TABLE [dbo].[Sanpham] CHECK CONSTRAINT [FK_Sanpham_Hedieuhanh]
+GO
+
+USE [master]
+GO
+
+ALTER DATABASE [QLCauLong] SET  READ_WRITE 
+GO
